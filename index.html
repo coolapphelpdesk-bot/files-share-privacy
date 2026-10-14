@@ -56,7 +56,7 @@
 
 <header>
   <h1>Privacy Policy</h1>
-  <p>Files share &middot; last updated <time datetime="2026-10-14">October 14, 2026</time></p>
+  <p>Files share &middot; last updated <time datetime="2026-10-15">October 15, 2026</time></p>
 </header>
 
 <section class="card">
@@ -64,7 +64,8 @@
   <p>Files share (&ldquo;the app&rdquo;) moves files, folders and short notes between devices over a local network, and can share a folder with a web browser or FTP client. It is published by <strong>Cool App Helpdesk</strong>.</p>
   <ul>
     <li>Files go <strong>directly from one device to another</strong> over your Wi-Fi network, a hotspot one phone creates, or Wi-Fi Direct. They never pass through the developer or any cloud service &mdash; the app has no server.</li>
-    <li>No account, no sign-up, <strong>no ads, no analytics and no tracking</strong>.</li>
+    <li>No account, no sign-up and <strong>no analytics</strong>. The developer receives no data about you.</li>
+    <li>The app contains the <strong>Google AdMob</strong> advertising SDK. It is <strong>inactive until September 1, 2027</strong>: before that date it is never started, shows no ads and sends nothing. From that date the app shows a banner, and Google processes some device data to serve it, as described in section 5.</li>
     <li>Nothing is sent without you: a transfer starts only when you send, and an incoming transfer asks you to accept it first (unless you switch that off).</li>
     <li>Permissions are requested only when a feature needs them. The app uses <strong>no storage, photo or media permission</strong>: you pick files with Android&rsquo;s own picker.</li>
   </ul>
@@ -72,7 +73,7 @@
 
 <section class="card">
   <h2>2. Data we collect</h2>
-  <p>The developer (<strong>Cool App Helpdesk</strong>) collects <strong>no data</strong>. The app contains no analytics, crash-reporting or advertising SDK and has no server to send anything to, so we never receive your files, your device details or anything about you.</p>
+  <p>The developer (<strong>Cool App Helpdesk</strong>) collects <strong>no data</strong>. The app contains no analytics or crash-reporting SDK and has no server to send anything to, so we never receive your files, your device details or anything about you. Data processed by Google for advertising (from September 1, 2027) is covered in section 5.</p>
   <p>Files you send are transferred only to the device you choose (see section 5).</p>
 </section>
 
@@ -99,7 +100,8 @@
       <tr><td><code>NEARBY_WIFI_DEVICES</code> (Android 13+)<br><code>ACCESS_FINE_LOCATION</code>, <code>ACCESS_COARSE_LOCATION</code> (Android 12 and older)</td><td>Required by Android to set up Wi-Fi Direct and the local hotspot. On Android 13+ it is declared &ldquo;never for location&rdquo;; on older versions Android requires location for Wi-Fi scanning. <strong>The app never reads or stores your location.</strong></td><td>When you open Wi-Fi Direct or start the hotspot</td></tr>
       <tr><td><code>POST_NOTIFICATIONS</code></td><td>Show transfer progress and that Receive or a folder share is running, with a Stop button</td><td>When you start Receive, a transfer or a folder share (optional)</td></tr>
       <tr><td><code>FOREGROUND_SERVICE</code>, <code>FOREGROUND_SERVICE_DATA_SYNC</code>, <code>WAKE_LOCK</code></td><td>Keep a transfer or folder share running while the app is in the background</td><td>Auto-granted (normal permission)</td></tr>
-      <tr><td><code>INTERNET</code>, <code>ACCESS_NETWORK_STATE</code>, <code>ACCESS_WIFI_STATE</code>, <code>CHANGE_WIFI_STATE</code>, <code>CHANGE_WIFI_MULTICAST_STATE</code></td><td>Open local network connections between your devices and find nearby devices on the same network</td><td>Auto-granted (normal permission)</td></tr>
+      <tr><td><code>AD_ID</code></td><td>Lets the Google AdMob SDK read the Android advertising ID to serve ads, from September 1, 2027. Nothing reads it before then.</td><td>Auto-granted (normal permission)</td></tr>
+      <tr><td><code>INTERNET</code>, <code>ACCESS_NETWORK_STATE</code>, <code>ACCESS_WIFI_STATE</code>, <code>CHANGE_WIFI_STATE</code>, <code>CHANGE_WIFI_MULTICAST_STATE</code></td><td>Open local network connections between your devices and find nearby devices on the same network; from September 1, 2027 also used by the ad SDK to load ads</td><td>Auto-granted (normal permission)</td></tr>
     </tbody>
   </table>
   <p>The app does <strong>not</strong> request storage, photos, media, contacts, microphone or background location access.</p>
@@ -107,14 +109,20 @@
 
 <section class="card">
   <h2>5. Network activity and third parties</h2>
-  <p>The app talks only to <strong>devices on your local network</strong> that you choose to connect to. It makes no connection to the internet, to the developer or to any third-party service.</p>
+  <p>Your files travel only between <strong>devices on your local network</strong> that you choose to connect to. They never go to the internet, to the developer or to any third-party service. The only other connection the app can make is the advertising SDK&rsquo;s, from September 1, 2027 (below).</p>
   <ul>
     <li><strong>Sending and receiving.</strong> Files travel directly between the two devices. A receiver shows a QR code containing its local address and a pairing code; a sender that scanned it is recognised. A sender that only typed the address always has to be accepted on the receiving device.</li>
     <li><strong>Discovery.</strong> While Receive is on, the app announces your <strong>device name</strong> on the local network (Android&rsquo;s network service discovery) so nearby senders can list it. You can change the device name in Settings. The announcement stops when you turn Receive off.</li>
     <li><strong>Share a folder.</strong> While it runs, devices on the same network can open the folder you chose through a web browser (HTTP) or an FTP client. A user name and password are required by default, and a read-only option prevents uploads and deletions.</li>
     <li><strong>Encryption.</strong> Transfers and folder shares on the local network are <strong>not encrypted</strong>. Anyone able to monitor the same network could see the files in transit, so use networks you trust. The app&rsquo;s own hotspot and Wi-Fi Direct links are protected by Android&rsquo;s Wi-Fi security (WPA2 or newer).</li>
   </ul>
-  <p>The app contains <strong>no analytics SDKs, no advertising SDKs, no crash-reporting SDKs and no social or attribution SDKs</strong>. The libraries it uses (NanoHTTPD for the folder share, ZXing for QR codes, AndroidX) work entirely on the device.</p>
+  <p><strong>Advertising (Google AdMob).</strong></p>
+  <ul>
+    <li><strong>Before September 1, 2027:</strong> the ad SDK is bundled but never initialised. No ad request or any other connection to Google is made, the advertising ID is not read, and no ads are shown.</li>
+    <li><strong>From September 1, 2027:</strong> the app shows one banner at the bottom of the Home, History and Received screens, served by Google AdMob. No ads appear while you send, receive or share a folder. To deliver and measure ads and to prevent fraud, Google may process your device&rsquo;s <strong>advertising ID</strong>, your <strong>IP address</strong> (from which an approximate location may be derived), <strong>device and app information</strong> (model, operating system, language, app version) and <strong>ad interactions</strong> (ads shown and tapped) and diagnostics. Ads may be personalised. You can reset or delete your advertising ID in <em>Android Settings &rarr; Privacy &rarr; Ads</em>.</li>
+    <li>Google acts as an independent controller for this processing. Learn more in <a href="https://policies.google.com/technologies/partner-sites">How Google uses information from sites or apps that use its services</a> and <a href="https://policies.google.com/privacy">Google&rsquo;s Privacy Policy</a>. Your files, file names and transfer history are never given to the ad SDK.</li>
+  </ul>
+  <p>Apart from AdMob, the app contains <strong>no analytics SDKs, no crash-reporting SDKs and no social or attribution SDKs</strong>. The libraries it uses (NanoHTTPD for the folder share, ZXing for QR codes, AndroidX) work entirely on the device.</p>
   <p>When you send a file through Android&rsquo;s share sheet into the app, or open a received file in another app, Android passes that file between the apps involved. The developer does not see what you share.</p>
 </section>
 
@@ -126,12 +134,12 @@
 <section class="card">
   <h2>7. Data retention and deletion</h2>
   <p>Received files stay in <code>Download/Files share</code> (or your chosen folder) until you delete them, in the app&rsquo;s Received tab or with any file manager. Uninstalling the app does not delete them. Transfer history can be cleared in the History tab; history and settings are removed when you clear the app&rsquo;s storage in <em>Android Settings &rarr; Apps &rarr; Files share &rarr; Storage &rarr; Clear storage</em> or uninstall the app.</p>
-  <p>The developer holds no data about you, so there is nothing for us to delete.</p>
+  <p>The developer holds no data about you, so there is nothing for us to delete. Data processed by Google for advertising (from September 1, 2027) is retained under Google&rsquo;s policies linked in section 5.</p>
 </section>
 
 <section class="card">
   <h2>8. Security</h2>
-  <p>App data is held in the app&rsquo;s private storage, protected by Android&rsquo;s built-in application sandboxing, and is not accessible to other apps. Incoming file names are cleaned so a transfer cannot write outside the receiving folder. The app is distributed through the Google Play Store, which verifies the developer signing key on every update.</p>
+  <p>App data is held in the app&rsquo;s private storage, protected by Android&rsquo;s built-in application sandboxing, and is not accessible to other apps. Connections made by the ad SDK use encryption (HTTPS). Incoming file names are cleaned so a transfer cannot write outside the receiving folder. The app is distributed through the Google Play Store, which verifies the developer signing key on every update.</p>
 </section>
 
 <section class="card">
